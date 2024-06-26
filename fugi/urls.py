@@ -22,3 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+admin.site.site_header = 'Noodle´s employees page'
+admin.site.site_title = 'Employees Login'
+admin.site.index_title = "Noodle"
