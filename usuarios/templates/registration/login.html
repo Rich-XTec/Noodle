@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="form-signin" method="post" autocomplete="off">
+        {% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Informe seus dados</h1>
+        <!-- inputs: precisamos usar 'username' e 'password', pois foram esses campos configurados anteriormente para autenticação -->
+        <label for="username" class="sr-only">E-mail</label>
+        <!-- autofocus - quando a pag. carregar, vai dar foco a este campo -->
+        <input type="email" id="username" name="username" class="form-control" placeholder="Informe seu e-mail" required autofocus>
+        <label for="password" class="sr-only">Senha</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Informe sua senha" required>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Acessar</button>
+        <p class="mt-5 mb-3 text-muted">&copy; {% now 'Y'%}</p> <!-- apresentar o ano -->
+    </form>
+{% endblock %}
