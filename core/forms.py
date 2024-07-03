@@ -19,8 +19,8 @@ class ContatoForm(forms.Form):
         mail = EmailMessage(
             subject=assunto,
             body=conteudo,
-            from_email='contato@fusion.com.br',
-            to=['contato@fusion.com.br',],
+            from_email='contato@noodle.com.br',
+            to=['contato@noodle.com.br',],
             headers={'Reply-To': email}
         )
         mail.send()

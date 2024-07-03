@@ -1,12 +1,20 @@
-{% extends 'base.html' %}
+{% extends 'logbase.html' %}
 {% block content %}
+
     <div class="container">
-        <h1>Bem vindo ao Projeto de Login</h1>
+        <h1>Welcome to Noodle´s User Login page</h1>
         {% if user.is_anonymous %} <!-- user está no request que é passado por contexto -->
            <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+        <h3>-------------------------------- </h3>
+        <div class="content">
+                <strong>
+                    If you don´t have an account,
+                <a href="/#contact" class="button button1">Contact Us</a>
+                to get your account! </strong>
+        </div>
         {% else %}
             <div class="alert alert-primary" role="alert">
-                Seja bem-vindo(a) {{ user.get_full_name }}!
+                Let´s go! {{ user.get_full_name }}!
             </div>
             <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
         {% endif %}

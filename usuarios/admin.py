@@ -16,5 +16,5 @@ class ModelUsuarioAdmin(UserAdmin):
         (None, {'fields': ('email', 'password')}),
         ('Personal Information', {'fields': ('first_name', 'last_name', 'fone')}),
         ('Permissions',{'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
-        ('Datas Importantes', {'fields': ('last_login', 'data_joined')}),
+        ('Datas Importantes', {'fields': ('last_login', 'date_joined')}),
     )

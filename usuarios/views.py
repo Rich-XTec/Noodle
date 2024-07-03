@@ -1,7 +1,11 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 
-# from .models import ModelUsuario
+from .models import ModelUsuario
 # from .forms import ContatoForm
+
+
+def loginuser(ModelUsuario):
+    return render(ModelUsuario, 'logindex.html')
 
 # class IndexView(FormView):
 #     template_name = 'index.html'

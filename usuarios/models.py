@@ -31,8 +31,8 @@ class UsuarioManager(BaseUserManager):
 
 class ModelUsuario(AbstractUser):
     email = models.EmailField('e-mail', unique=True)
-    fone = models.CharField('Telefone', max_length=15)
-    is_staff = models.BooleanField('Membro da Equipe', default=True)
+    fone = models.CharField('fone', max_length=15)
+    is_staff = models.BooleanField('Staff Member', default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'fone']
