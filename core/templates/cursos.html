@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Cursos Disponíveis</title>
+    <style>
+        .curso-item {
+            border: 1px solid red;
+            padding: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <section id="cursos" class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Nossos Cursos</h2>
+          <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+        </div>
+        <div class="row">
+          {% for curso in cursos %}
+          <!-- Curso item -->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="curso-item wow fadeInRight" data-wow-delay="1s">
+              <div class="curso-thumb">
+                <img src="{% static 'images/course_placeholder.png' %}" alt="Insira um curso aqui">
+              </div>
+              <div class="curso-content">
+                <h3><a href="#">Insira um curso aqui</a></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="curso-footer">
+                <span class="curso-preco">$0.00</span>
+                <a href="#" class="btn btn-primary">Comprar</a>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          {% for i in "0"|ljust:20 %}
+          <!-- Placeholder item -->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="curso-item wow fadeInRight" data-wow-delay="1s">
+              <div class="curso-thumb">
+                <img src="{% static 'images/course_placeholder.png' %}" alt="Insira um curso aqui">
+              </div>
+              <div class="curso-content">
+                <h3><a href="#">Insira um curso aqui</a></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+              <div class="curso-footer">
+                <span class="curso-preco">$0.00</span>
+                <a href="#" class="btn btn-primary">Comprar</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+    {% include 'rodape.html' %}
+</body>
+</html>
+{% endblock %}
