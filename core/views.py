@@ -11,12 +11,13 @@ from .models import Curso
 def cursos_view(request):
     order_by = request.GET.get('order_by', 'criado_em')
     cursos = Curso.objects.all().order_by(order_by)[:20]
-    return render(request, 'cursos.html', {'cursos': cursos})
+    return render(request, 'viewcursos.html', {'cursos': cursos})
 
 def perfil_view(request):
-    order_by = request.GET.get('order_by', 'criado_em')
-    cursos = Curso.objects.all().order_by(order_by)[:20]
-    return render(request, 'perfil.html', {'cursos': cursos})
+    return render(request, 'viewperfil.html')
+
+def login_view(request):
+    return render(request, 'login.html')  # Renderiza a template de login
 
 
 class IndexView(FormView):

@@ -1,13 +1,4 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Cursos Disponíveis</title>
     <style>
         .curso-item {
             border: 1px solid red;
@@ -15,9 +6,6 @@
             margin: 10px;
         }
     </style>
-</head>
-<body>
-    
     <section id="cursos" class="section-padding">
       <div class="container">
         <div class="section-header text-center">
@@ -25,14 +13,28 @@
           <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
         </div>
         <div class="row">
-          {% for curso in cursos %}
+          {% for s in servicos %}
+          <!-- Services item -->
+          <div class="col-md-6 col-lg-4 col-xs-12">
+            <div class="services-item wow fadeInRight" data-wow-delay="1s">
+              <div class="icon">
+                <i class="{{ s.icone }}"></i>
+              </div>
+              <div class="services-content">
+                <h3><a href="#"> {{ s.servico }}</a></h3>
+                <p>{{ s.descricao }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          {% for s in servicos %}
           <!-- Curso item -->
           <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="curso-item wow fadeInRight" data-wow-delay="1s">
+            <div class="services-item wow fadeInRight" data-wow-delay="1s">
               <div class="curso-thumb">
-                <img src="{% static 'images/course_placeholder.png' %}" alt="Insira um curso aqui">
+                <img src="{% static 'img/user_placeholder.png' %}" alt="Insira um curso aqui">
               </div>
-              <div class="curso-content">
+              <div class="services-content">
                 <h3><a href="#">Insira um curso aqui</a></h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               </div>
@@ -43,12 +45,12 @@
             </div>
           </div>
           {% empty %}
-          {% for i in "0"|ljust:20 %}
+          {% for i in "0"|ljust:12 %}
           <!-- Placeholder item -->
           <div class="col-md-6 col-lg-4 col-xs-12">
             <div class="curso-item wow fadeInRight" data-wow-delay="1s">
               <div class="curso-thumb">
-                <img src="{% static 'images/course_placeholder.png' %}" alt="Insira um curso aqui">
+                <img src="{% static 'img/user_placeholder.png' %}" alt="Insira um curso aqui">
               </div>
               <div class="curso-content">
                 <h3><a href="#">Insira um curso aqui</a></h3>
@@ -65,7 +67,5 @@
         </div>
       </div>
     </section>
-    {% include 'rodape.html' %}
 </body>
 </html>
-{% endblock %}
