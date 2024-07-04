@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-#{% block content %}
+{% block content %}
 <div id="hero-area" class="hero-area-bg">
         <div class="container">
           <div class="row">
@@ -9,7 +9,7 @@
                 <h2 class="head-title">500<br>Internal Server Error</h2>
                 <p>Sadly the internship of ours has made a mistake, but it will soon be fixed!</p>
                 <div class="header-button">
-                  <a href="{{% url 'index' %}}" class="btn btn-common">Return to Home Page</i></a>
+                  <a href="{% url 'index' %}" class="btn btn-common">Return to Home Page</i></a>
                 </div>
               </div>
             </div>

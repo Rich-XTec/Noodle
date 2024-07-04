@@ -1,16 +1,5 @@
-{% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Cursos Disponíveis</title>
-
-</head>
-<body>
 
     <section id="cursos" class="section-padding">
       <div class="container">
@@ -23,41 +12,20 @@
           {% for s in cursos %}
           <!-- Services item -->
           <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="servicos-item wow fadeInRight" data-wow-delay="1s">
+            <div class="cursos-item wow fadeInRight" data-wow-delay="1s">
               <div class="icon">
                 <i class="{{ s.icone }}"></i>
               </div>
-              <div class="servicos-content">
-                <h3><a href="cursos/"> {{ s.nome }}</a></h3>
+              <div class="cursos-content">
+                <h3><a href="/cursos/"> {{ s.servico }}</a></h3>
                 <p>{{ s.descricao }}</p>
               </div>
             </div>
           </div>
           {% endfor %}
 
-
-          {% for i in "0"|ljust:5 %}
-          <!-- Placeholder item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="curso-item wow fadeInRight" data-wow-delay="1s">
-              <div class="curso-thumb">
-                <img src="{% static 'img/course_placeholder.png' %}" alt="Insira img curso aqui">
-              </div>
-              <div class="curso-content">
-                <h3><a href="#">Course</a></h3>
-                <p>The best teacher in our college for you. </p>
-              </div>
-              <div class="curso-footer">
-                <span class="curso-preco">$0.00</span>
-                <a href="#" class="btn btn-primary">Buy</a>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
         </div>
       </div>
     </section>
-    {% include 'rodape.html' %}
-</body>
-</html>
+
 {% endblock %}

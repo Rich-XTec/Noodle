@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Cargo, Servico, Funcionario, Post
+from .models import Cargo, Servico, Funcionario, Post, Curso
 
 
 @admin.register(Cargo)
@@ -29,6 +29,15 @@ class PostAdmin(admin.ModelAdmin):
         return qs.filter(author=request.user) #somente possibilita ver as proprias postagens
 
     exclude = ['author',]
+    def save_model(self, request, obj, form, change):
+        obj.author = request.user
+        super().save_model(request, obj, form, change)  #impede de um usuario criar postagen com outro nome
+
+
+@admin.register(Curso)
+class CursoAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'preco', 'descricao')
+
     def save_model(self, request, obj, form, change):
         obj.author = request.user
         super().save_model(request, obj, form, change)  #impede de um usuario criar postagen com outro nome

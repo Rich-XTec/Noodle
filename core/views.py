@@ -9,7 +9,7 @@ from .forms import ContatoForm
 def cursos_view(request):
     order_by = request.GET.get('order_by', 'criado_em')
     cursos = Curso.objects.all().order_by(order_by)[:20]
-    return render(request, 'cursos.html', {'cursos': cursos})
+    return render(request, 'viewcursos.html')
 
 def perfil_view(request):
     return render(request, 'viewperfil.html')
