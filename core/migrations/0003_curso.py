@@ -23,4 +23,5 @@ class Migration(migrations.Migration):
                 ('criado_em', models.DateTimeField(auto_now_add=True)),
             ],
         ),
+
     ]

@@ -19,14 +19,15 @@
           <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
         </div>
         <div class="row">
-          {% for c in cursos %}
+
+          {% for s in cursos %}
           <!-- Services item -->
           <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="cursos-item wow fadeInRight" data-wow-delay="1s">
+            <div class="servicos-item wow fadeInRight" data-wow-delay="1s">
               <div class="icon">
-                <i class="{{ c.icone }}"></i>
+                <i class="{{ s.icone }}"></i>
               </div>
-              <div class="cursos-content">
+              <div class="servicos-content">
                 <h3><a href="cursos/"> {{ s.nome }}</a></h3>
                 <p>{{ s.descricao }}</p>
               </div>
@@ -34,30 +35,13 @@
           </div>
           {% endfor %}
 
-          {% for curso in cursos %}
-          <!-- Curso item -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="curso-item wow fadeInRight" data-wow-delay="1s">
-              <div class="curso-thumb">
-                <img src="{% static 'images/course_placeholder.png' %}" alt="Insira img curso aqui">
-              </div>
-              <div class="curso-content">
-                <h3><a href="#">SQL Basic</a></h3>
-                <p>Learn about SQL from the bottom.</p>
-              </div>
-              <div class="curso-footer">
-                <span class="curso-preco">$10.00</span>
-                <a href="#" class="btn btn-primary">BUY</a>
-              </div>
-            </div>
-          </div>
-          {% empty %}
+
           {% for i in "0"|ljust:5 %}
           <!-- Placeholder item -->
           <div class="col-md-6 col-lg-4 col-xs-12">
             <div class="curso-item wow fadeInRight" data-wow-delay="1s">
               <div class="curso-thumb">
-                <img src="{% static 'images/course_placeholder.png' %}" alt="Insira img curso aqui">
+                <img src="{% static 'img/course_placeholder.png' %}" alt="Insira img curso aqui">
               </div>
               <div class="curso-content">
                 <h3><a href="#">Course</a></h3>
@@ -69,7 +53,6 @@
               </div>
             </div>
           </div>
-          {% endfor %}
           {% endfor %}
         </div>
       </div>

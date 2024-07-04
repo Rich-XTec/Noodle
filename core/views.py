@@ -12,9 +12,7 @@ def cursos_view(request):
     return render(request, 'cursos.html', {'cursos': cursos})
 
 def perfil_view(request):
-    order_by = request.GET.get('order_by', 'criado_em')
-    cursos = Curso.objects.all().order_by(order_by)[:20]
-    return render(request, 'perfil.html', {'cursos': cursos})
+    return render(request, 'viewperfil.html')
 
 
 class IndexView(FormView):
