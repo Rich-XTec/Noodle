@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <title>Login Page - Noodle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit-no">
-    <link rel="shortcut icon" type="image/png" href="https://ufsc.br/wp-content/themes/brasilGov/img/favicon.ico?ver=1683580523">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
     <style>
@@ -24,13 +25,73 @@
   background-color: white;
   color: black;
   border: 2px solid #ff4e44;
+  padding: 9px 20px;
 }
 
 .button1:hover {
   background-color: #ff4e44;
   color: white;
 }
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid blue;
+}
+
+.button2:hover {
+  background-color: blue;
+  color: white;
+}
 </style>
+    <!-- Header Area wrapper Starts -->
+    <header id="header-wrap">
+      <!-- Navbar Start -->
+      <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+        <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'img/logo.png' %}" alt=""></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="lni-menu"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">
+                  Home
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#services">
+                  Services
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#team">
+                  Team
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#pricing">
+                  Pricing
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#testimonial">
+                  Testimonial
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/#contact">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+      <!-- Navbar End -->
 </head>
 <body class="text-center">
     {% block content %}{% endblock %}

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .profile-photo {
+            max-width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .section-padding {
+            padding: 60px 0;
+        }
+        .curso-item, .oferta-item, .aula-item, .contato-item {
+            border: 1px solid red;
+            padding: 20px;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        .curso-thumb img, .oferta-thumb img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <section id="user-profile" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Minha Conta</h2>
+                <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
+            </div>
+            <div class="row">
+                <!-- Coluna da Esquerda -->
+                <div class="col-md-3 text-center">
+                    <img src="{% static 'images/user_placeholder.png' %}" alt="Foto do Usuário" class="profile-photo">
+                    <h3>{{ user.username }}</h3>
+                    <p>{{ user.email }}</p>
+
+                    <h4>Notas</h4>
+                    <ul>
+                        {% for nota in notas %}
+                        <li>{{ nota.curso }} - Nota: {{ nota.valor }}</li>
+                        {% empty %}
+                        <li>Você ainda não recebeu notas.</li>
+                        {% endfor %}
+                    </ul>
+
+                    <h4>Certificados</h4>
+                    <ul>
+                        {% for certificado in certificados %}
+                        <li>{{ certificado.curso }} - <a href="{{ certificado.url }}">Ver Certificado</a></li>
+                        {% empty %}
+                        <li>Você ainda não possui certificados.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Coluna Central -->
+                <div class="col-md-6 text-center">
+                  <h4>Cursos Pagos</h4>
+                  <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+                      {% for curso in cursos_pagos %}
+                      <div class="col mb-4">
+                          <div class="curso-item">
+                              <div class="curso-thumb">
+                                  <img src="{{ curso.imagem_url }}" alt="{{ curso.nome }}">
+                              </div>
+                              <div class="curso-content">
+                                  <h5>{{ curso.nome }}</h5>
+                                  <p>{{ curso.descricao }}</p>
+                                  <p>Preço: {{ curso.preco }}</p>
+                                  <a href="{{ curso.detalhe_url }}" class="btn btn-primary">Acessar Curso</a>
+                              </div>
+                          </div>
+                      </div>
+                      {% empty %}
+                      <p>Você ainda não possui cursos pagos.</p>
+                      {% endfor %}
+                  </div>
+
+                  <h4>Ofertas</h4>
+                  <div class="row row-cols-1 row-cols-md-2 justify-content-center">
+                      {% for oferta in ofertas %}
+                      <div class="col mb-4">
+                          <div class="oferta-item">
+                              <div class="oferta-thumb">
+                                  <img src="{{ oferta.imagem_url }}" alt="{{ oferta.nome }}">
+                              </div>
+                              <div class="oferta-content">
+                                  <h5>{{ oferta.nome }}</h5>
+                                  <p>{{ oferta.descricao }}</p>
+                                  <p>Preço: {{ oferta.preco }}</p>
+                                  <a href="{{ oferta.detalhe_url }}" class="btn btn-primary">Ver Oferta</a>
+                              </div>
+                          </div>
+                      </div>
+                      {% empty %}
+                      <p>Não há ofertas disponíveis no momento.</p>
+                      {% endfor %}
+                  </div>
+              </div>
+
+                <!-- Coluna da Direita -->
+                <div class="col-md-3">
+                    <h4>Aulas Marcadas</h4>
+                    <div class="aula-item">
+                        <!-- Placeholder para um calendário -->
+                        <p>Calendário de Aulas</p>
+                        <ul>
+                            {% for aula in aulas_marcadas %}
+                            <li>{{ aula.nome }} - {{ aula.data }}</li>
+                            {% empty %}
+                            <li>Você não tem aulas marcadas.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                    <h4>Contatos de Professores</h4>
+                    <div class="contato-item">
+                        <ul>
+                            {% for contato in contatos_professores %}
+                            <li>{{ contato.nome }} - {{ contato.email }}</li>
+                            {% empty %}
+                            <li>Você não tem contatos de professores.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    {% include 'rodape.html' %}
+</body>
+</html>
+{% endblock %}

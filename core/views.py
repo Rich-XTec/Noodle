@@ -1,9 +1,21 @@
 from django.views.generic import FormView
 from django.urls import reverse_lazy
 from django.contrib import messages
-
-from .models import Servico, Funcionario
+from django.shortcuts import render
+from .models import Servico, Funcionario, Curso
 from .forms import ContatoForm
+
+
+def cursos_view(request):
+    order_by = request.GET.get('order_by', 'criado_em')
+    cursos = Curso.objects.all().order_by(order_by)[:20]
+    return render(request, 'cursos.html', {'cursos': cursos})
+
+def perfil_view(request):
+    order_by = request.GET.get('order_by', 'criado_em')
+    cursos = Curso.objects.all().order_by(order_by)[:20]
+    return render(request, 'perfil.html', {'cursos': cursos})
+
 
 class IndexView(FormView):
     template_name = 'index.html'
