@@ -24,24 +24,6 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 
 
-    <style>
-      /* Define a classe login-btn para estilizar o botão */
-      .login-btn {
-        background-color: #f63854; /* Cor de fundo em hexadecimal */
-        color: white; /* Cor do texto */
-        padding: 10px 20px; /* Espaçamento interno (padding) */
-        border-radius: 25px; /* Bordas redondas */
-        text-decoration: none; /* Remove o sublinhado do link */
-        display: inline-block; /* Permite aplicar padding e background color ao link */
-        border: none; /* Remove borda padrão */
-      }
-
-      /* Adiciona efeito de hover */
-      .login-btn:hover {
-        background-color: #2980b9; /* Cor de fundo ao passar o mouse */
-      }
-
-    </style>
 
   </head>
   <body>
@@ -71,7 +53,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/#services">
-                  Services
+                  Courses
                 </a>
               </li>
               <li class="nav-item">
@@ -95,10 +77,16 @@
                 </a>
               </li>
               <li class="nav-item">
+                {% if user.is_authenticated %}
                 <a class="nav-link" href="/login/">
-                  Login</a> <a class="btn btn-border" href="/perfil/">
+                  Logout</a>
+                <a class="btn btn-border" href="/perfil/">
                   Profile
                 </a>
+                {% else %}
+                  <a class="btn btn-border" href="/login/">
+                  Login</a>
+                {% endif %}
               </li>
             </ul>
           </div>

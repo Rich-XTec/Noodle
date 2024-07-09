@@ -80,14 +80,14 @@ class Funcionario(Base):
         return self.nome
 
 
-class Curso(models.Model):
-    nome = models.CharField(max_length=200)
-    descricao = models.TextField()
-    preco = models.DecimalField(max_digits=10, decimal_places=2)
-    imagem_url = models.URLField(blank=True, null=True)
-    detalhe_url = models.URLField(blank=True, null=True)
-    compra_url = models.URLField(blank=True, null=True)
-    criado_em = models.DateTimeField(auto_now_add=True)
+class Curso(Base):
+    nome = models.CharField('Nome', max_length=200)
+    descricao = models.TextField('Descrição', max_length=200)
+    preco = models.DecimalField('Preço',max_digits=10, decimal_places=2, default='0')
+    imagem_url = models.CharField('URL IMG', max_length=200, default='#')
+    #detalhe_url = models.CharField(blank=True, null=True, default='#')
+    compra_url = models.CharField('Link compra', max_length=200, default='#')
+    #criado_em = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Curso'

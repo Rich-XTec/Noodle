@@ -36,8 +36,5 @@ class PostAdmin(admin.ModelAdmin):
 
 @admin.register(Curso)
 class CursoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'preco', 'descricao')
+    list_display = ('nome', 'preco', 'descricao', 'ativo')
 
-    def save_model(self, request, obj, form, change):
-        obj.author = request.user
-        super().save_model(request, obj, form, change)  #impede de um usuario criar postagen com outro nome

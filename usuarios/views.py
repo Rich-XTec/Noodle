@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from .models import ModelUsuario
 # from .forms import ContatoForm
 

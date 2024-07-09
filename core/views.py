@@ -1,16 +1,20 @@
-from django.views.generic import FormView
+from django.views.generic import FormView, ListView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.shortcuts import render
 from .models import Servico, Funcionario, Curso
 from .forms import ContatoForm
+from django.contrib.auth.decorators import login_required
+
+class CursosView(ListView):
+    template_name = "viewcursos.html"
+    context_object_name = "latest_question_list"
+
+    def get_queryset(self):
+        return Curso.objects.order_by("criados")[:5]
 
 
-def cursos_view(request):
-    order_by = request.GET.get('order_by', 'criado_em')
-    cursos = Curso.objects.all().order_by(order_by)[:20]
-    return render(request, 'viewcursos.html')
-
+@login_required()
 def perfil_view(request):
     return render(request, 'viewperfil.html')
 
