@@ -79,13 +79,16 @@
               <li class="nav-item">
                 {% if user.is_authenticated %}
                 <a class="nav-link" href="/login/">
-                  Logout</a>
-                <a class="btn btn-border" href="/perfil/">
+                  Logout</a> </li>
+                <li class="nav-item">
+                  <a class="btn btn-border" href="/perfil/">
                   Profile
                 </a>
                 {% else %}
                   <a class="btn btn-border" href="/login/">
                   Login</a>
+                <a class="btn btn-border" href="/register/">
+                  Register</a>
                 {% endif %}
               </li>
             </ul>
