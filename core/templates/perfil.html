@@ -35,57 +35,57 @@
     <section id="user-profile" class="section-padding">
         <div class="container">
             <div class="section-header text-center">
-                <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">Minha Conta</h2>
+                <h2 class="section-title wow fadeInDown" data-wow-delay="0.3s">My Profile</h2>
                 <div class="shape wow fadeInDown" data-wow-delay="0.3s"></div>
             </div>
             <div class="row">
                 <!-- Coluna da Esquerda -->
                 <div class="col-md-6 text-center">
-                    <img src="{% static 'img/user_placeholder.png' %}" alt="Foto do Usuário" class="profile-photo">
-                    <h3>{{ user.username }}</h3>
-                    <p>{{ user.email }}</p>
+                    <img src="{% static 'img/user_placeholder.png' %}" alt="User img" class="profile-photo">
+                    <h1>{{ user.first_name }}</h1>
+                    <p>{{ user.username }}</p>
 
-                    <h4>Notas</h4>
+                    <h4>Grades</h4>
                     <ul>
                         {% for nota in notas %}
                         <li>{{ nota.curso }} - Nota: {{ nota.valor }}</li>
                         {% empty %}
-                        <li>Você ainda não recebeu notas.</li>
+                        <li>Not yet.</li>
                         {% endfor %}
                     </ul>
 
-                    <h4>Certificados</h4>
+                    <h4>Certificates</h4>
                     <ul>
                         {% for certificado in certificados %}
-                        <li>{{ certificado.curso }} - <a href="{{ certificado.url }}">Ver Certificado</a></li>
+                        <li>{{ certificado.curso }} - <a href="{{ certificado.url }}">Show Certificates</a></li>
                         {% empty %}
-                        <li>Você ainda não possui certificados.</li>
+                        <li>Don´t have Certificates yet.</li>
                         {% endfor %}
                     </ul>
                 </div>
 
                 <!-- Coluna da Direita -->
                 <div class="col-md-6">
-                    <h4>Aulas Marcadas</h4>
+                    <h4>Scheduled Classes</h4>
                     <div class="aula-item">
                         <!-- Placeholder para um calendário -->
-                        <p>Calendário de Aulas</p>
+                        <p>Class Calendar</p>
                         <ul>
                             {% for aula in aulas_marcadas %}
                             <li>{{ aula.nome }} - {{ aula.data }}</li>
                             {% empty %}
-                            <li>Você não tem aulas marcadas.</li>
+                            <li>No Classes yet.</li>
                             {% endfor %}
                         </ul>
                     </div>
 
-                    <h4>Contatos de Professores</h4>
+                    <h4>Teachers Contact</h4>
                     <div class="contato-item">
                         <ul>
                             {% for contato in contatos_professores %}
                             <li>{{ contato.nome }} - {{ contato.email }}</li>
                             {% empty %}
-                            <li>Você não tem contatos de professores.</li>
+                            <li>Not yet.</li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -95,10 +95,10 @@
             <!-- Conteúdo da Coluna Central Removida -->
             <div class="row full-width-content" style="display:none">
                 <div class="col-12 text-center">
-                    <h4>Cursos Pagos</h4>
+                    <h4>Paid Courses</h4>
                     {% include 'servicos.html' %}
 
-                    <h4>Ofertas</h4>
+                    <h4>Sale</h4>
                     <div class="row row-cols-1 row-cols-md-2 justify-content-center">
                         {% for oferta in ofertas %}
                         <div class="col mb-4">
@@ -109,13 +109,13 @@
                                 <div class="oferta-content">
                                     <h5>{{ oferta.nome }}</h5>
                                     <p>{{ oferta.descricao }}</p>
-                                    <p>Preço: {{ oferta.preco }}</p>
-                                    <a href="{{ oferta.detalhe_url }}" class="btn btn-primary">Ver Oferta</a>
+                                    <p>Price: {{ oferta.preco }}</p>
+                                    <a href="{{ oferta.detalhe_url }}" class="btn btn-primary">Sales info</a>
                                 </div>
                             </div>
                         </div>
                         {% empty %}
-                        <p>Não há ofertas disponíveis no momento.</p>
+                        <p>Nothing available yet.</p>
                         {% endfor %}
                     </div>
                 </div>

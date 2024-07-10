@@ -32,7 +32,7 @@ class CursosView(ListView):
         return Curso.objects.order_by("criados")[:5]
 
 
-@login_required()
+@login_required(login_url='login')
 def perfil_view(request):
     return render(request, 'viewperfil.html')
 
