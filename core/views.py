@@ -5,6 +5,20 @@ from django.shortcuts import render
 from .models import Servico, Funcionario, Curso
 from .forms import ContatoForm
 from django.contrib.auth.decorators import login_required
+from usuarios.forms import ModelUsuarioCreateForm
+
+
+def registerPage(request):
+    form = ModelUsuarioCreateForm()
+
+    if request.method == 'POST':
+        form = ModelUsuarioCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form':form}
+    return render(request, 'register.html', context)
+
 
 class CursosView(ListView):
     template_name = "viewcursos.html"

@@ -1,6 +1,7 @@
 from django import forms
 from django.core.mail.message import EmailMessage
 
+
 # antes usávamos models.Model - porém, não estamos realizando um cadastro, então usaremos forms.Form
 class ContatoForm(forms.Form):
     nome = forms.CharField(label='Nome', max_length=100)

@@ -4,7 +4,7 @@ from .models import ModelUsuario
 class ModelUsuarioCreateForm(UserCreationForm):
     class Meta:
         model = ModelUsuario
-        fields = ('first_name', 'last_name', 'fone')
+        fields = ('username', 'first_name')
         labels = {'username': 'Username/E-mail'}
 
     def save(self, commit=True):

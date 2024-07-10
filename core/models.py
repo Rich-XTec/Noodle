@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from stdimage.models import StdImageField
 
+
 class Post(models.Model):
     author = models.ForeignKey(get_user_model(), verbose_name='Author', on_delete=models.CASCADE)
     topic = models.CharField('Topic', max_length=100)
