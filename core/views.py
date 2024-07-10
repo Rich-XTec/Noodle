@@ -1,7 +1,7 @@
 from django.views.generic import FormView, ListView
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Servico, Funcionario, Curso
 from .forms import ContatoForm
 from django.contrib.auth.decorators import login_required
@@ -15,6 +15,10 @@ def registerPage(request):
         form = ModelUsuarioCreateForm(request.POST)
         if form.is_valid():
             form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account Created for ' + user)
+
+            return redirect('login')
 
     context = {'form':form}
     return render(request, 'register.html', context)

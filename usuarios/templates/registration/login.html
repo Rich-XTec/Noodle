@@ -11,6 +11,9 @@
         <input type="password" id="password" name="password" class="form-control" placeholder="Insert your password" required>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Enter</button>
+        {% for message in messages %}
+            <p id="messages">{{message}}</p>
+        {% endfor %}
         <p class="mt-5 mb-3 text-muted">&copy; {% now 'Y'%}</p> <!-- apresentar o ano -->
     </form>
 {% endblock %}
